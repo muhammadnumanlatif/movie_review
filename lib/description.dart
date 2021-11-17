@@ -23,14 +23,12 @@ class Description extends StatelessWidget {
               height: 250,
               child: Stack(children: [
                 Positioned(
-                  child: Expanded(
-                    child: Container(
-                      height: 250,
-                      width: MediaQuery.of(context).size.width,
-                      child: Image.network(
-                        bannerurl!,
-                        fit: BoxFit.cover,
-                      ),
+                  child: Container(
+                    height: 250,
+                    width: MediaQuery.of(context).size.width,
+                    child: Image.network(
+                      bannerurl!,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
