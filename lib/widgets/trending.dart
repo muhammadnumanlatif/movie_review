@@ -4,9 +4,9 @@ import 'package:movie_app_flutter/utils/text.dart';
 import '../description.dart';
 
 class TrendingMovies extends StatelessWidget {
-  final List trending;
+  final List? trending;
 
-  const TrendingMovies({Key key, this.trending}) : super(key: key);
+  const TrendingMovies({Key? key, this.trending}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,7 +15,7 @@ class TrendingMovies extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           modified_text(
-            text: 'Trending Movies',
+            text: 'trending Movies',
             size: 26,
           ),
           SizedBox(height: 10),
@@ -23,7 +23,7 @@ class TrendingMovies extends StatelessWidget {
               height: 270,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: trending.length,
+                  itemCount: trending!.length,
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
@@ -31,17 +31,17 @@ class TrendingMovies extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => Description(
-                                      name: trending[index]['title'],
+                                      name: trending![index]['title'],
                                       bannerurl:
                                           'https://image.tmdb.org/t/p/w500' +
-                                              trending[index]['backdrop_path'],
+                                              trending![index]['backdrop_path'],
                                       posterurl:
                                           'https://image.tmdb.org/t/p/w500' +
-                                              trending[index]['poster_path'],
-                                      description: trending[index]['overview'],
-                                      vote: trending[index]['vote_average']
+                                              trending![index]['poster_path'],
+                                      description: trending![index]['overview'],
+                                      vote: trending![index]['vote_average']
                                           .toString(),
-                                      launch_on: trending[index]
+                                      launch_on: trending![index]
                                           ['release_date'],
                                     )));
                       },
@@ -54,7 +54,7 @@ class TrendingMovies extends StatelessWidget {
                                 image: DecorationImage(
                                   image: NetworkImage(
                                       'https://image.tmdb.org/t/p/w500' +
-                                          trending[index]['poster_path']),
+                                          trending![index]['poster_path']),
                                 ),
                               ),
                               height: 200,
@@ -63,8 +63,8 @@ class TrendingMovies extends StatelessWidget {
                             Container(
                               child: modified_text(
                                   size: 15,
-                                  text: trending[index]['title'] != null
-                                      ? trending[index]['title']
+                                  text: trending![index]['title'] != null
+                                      ? trending![index]['title']
                                       : 'Loading'),
                             )
                           ],

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:movie_app_flutter/utils/text.dart';
 
 class Description extends StatelessWidget {
-  final String name, description, bannerurl, posterurl, vote, launch_on;
+  final String? name, description, bannerurl, posterurl, vote, launch_on;
 
   const Description(
-      {Key key,
+      {Key? key,
       this.name,
       this.description,
       this.bannerurl,
@@ -23,18 +23,20 @@ class Description extends StatelessWidget {
               height: 250,
               child: Stack(children: [
                 Positioned(
-                  child: Container(
-                    height: 250,
-                    width: MediaQuery.of(context).size.width,
-                    child: Image.network(
-                      bannerurl,
-                      fit: BoxFit.cover,
+                  child: Expanded(
+                    child: Container(
+                      height: 250,
+                      width: MediaQuery.of(context).size.width,
+                      child: Image.network(
+                        bannerurl!,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
                 Positioned(
                     bottom: 10,
-                    child: modified_text(text: '⭐ Average Rating - ' + vote)),
+                    child: modified_text(text: '⭐ Average Rating - ' + vote!)),
               ])),
           SizedBox(height: 15),
           Container(
@@ -44,13 +46,13 @@ class Description extends StatelessWidget {
           Container(
               padding: EdgeInsets.only(left: 10),
               child:
-                  modified_text(text: 'Releasing On - ' + launch_on, size: 14)),
+                  modified_text(text: 'Releasing On - ' + launch_on!, size: 14)),
           Row(
             children: [
               Container(
                 height: 200,
                 width: 100,
-                child: Image.network(posterurl),
+                child: Image.network(posterurl!),
               ),
               Flexible(
                 child: Container(

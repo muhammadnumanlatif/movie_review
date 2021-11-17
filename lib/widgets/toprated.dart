@@ -4,9 +4,9 @@ import 'package:movie_app_flutter/utils/text.dart';
 import '../description.dart';
 
 class TopRatedMovies extends StatelessWidget {
-  final List toprated;
+  final List? toprated;
 
-  const TopRatedMovies({Key key, this.toprated}) : super(key: key);
+  const TopRatedMovies({Key? key, this.toprated}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,7 +23,7 @@ class TopRatedMovies extends StatelessWidget {
               height: 270,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: toprated.length,
+                  itemCount: toprated!.length,
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: (){
@@ -31,17 +31,17 @@ class TopRatedMovies extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => Description(
-                                  name: toprated[index]['title'],
+                                  name: toprated![index]['title'],
                                   bannerurl:
                                   'https://image.tmdb.org/t/p/w500' +
-                                      toprated[index]['backdrop_path'],
+                                      toprated![index]['backdrop_path'],
                                   posterurl:
                                   'https://image.tmdb.org/t/p/w500' +
-                                      toprated[index]['poster_path'],
-                                  description: toprated[index]['overview'],
-                                  vote: toprated[index]['vote_average']
+                                      toprated![index]['poster_path'],
+                                  description: toprated![index]['overview'],
+                                  vote: toprated![index]['vote_average']
                                       .toString(),
-                                  launch_on: toprated[index]
+                                  launch_on: toprated![index]
                                   ['release_date'],
                                 )));
                       },
@@ -54,7 +54,7 @@ class TopRatedMovies extends StatelessWidget {
                                 image: DecorationImage(
                                   image: NetworkImage(
                                       'https://image.tmdb.org/t/p/w500' +
-                                          toprated[index]['poster_path']),
+                                          toprated![index]['poster_path']),
                                 ),
                               ),
                               height: 200,
@@ -64,8 +64,8 @@ class TopRatedMovies extends StatelessWidget {
                               child: Expanded(
                                 child: modified_text(
                                     size: 15,
-                                    text: toprated[index]['title'] != null
-                                        ? toprated[index]['title']
+                                    text: toprated![index]['title'] != null
+                                        ? toprated![index]['title']
                                         : 'Loading'),
                               ),
                             )

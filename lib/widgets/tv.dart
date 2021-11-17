@@ -4,9 +4,9 @@ import 'package:movie_app_flutter/utils/text.dart';
 import '../description.dart';
 
 class TV extends StatelessWidget {
-  final List tv;
+  final List? tv;
 
-  const TV({Key key, this.tv}) : super(key: key);
+  const TV({Key? key, this.tv}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,7 +15,7 @@ class TV extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           modified_text(
-            text: 'tv Movies',
+            text: 'Tv',
             size: 26,
           ),
           SizedBox(height: 10),
@@ -23,7 +23,7 @@ class TV extends StatelessWidget {
               height: 270,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: tv.length,
+                  itemCount: tv!.length,
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
@@ -31,17 +31,17 @@ class TV extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => Description(
-                                  name: tv[index]['original_name'],
+                                  name: tv![index]['original_name'],
                                   bannerurl:
                                   'https://image.tmdb.org/t/p/w500' +
-                                      tv[index]['poster_path'],
+                                      tv![index]['poster_path'],
                                   posterurl:
                                   'https://image.tmdb.org/t/p/w500' +
-                                      tv[index]['backdrop_path'],
-                                  description: tv[index]['overview'],
-                                  vote: tv[index]['vote_average']
+                                      tv![index]['backdrop_path'],
+                                  description: tv![index]['overview'],
+                                  vote: tv![index]['vote_average']
                                       .toString(),
-                                  launch_on: tv[index]
+                                  launch_on: tv![index]
                                   ['first_air_date'],
                                 )));
                       },
@@ -54,7 +54,7 @@ class TV extends StatelessWidget {
                                 image: DecorationImage(
                                   image: NetworkImage(
                                       'https://image.tmdb.org/t/p/w500' +
-                                          tv[index]['poster_path']),
+                                          tv![index]['poster_path']),
                                 ),
                               ),
                               height: 200,
@@ -63,8 +63,8 @@ class TV extends StatelessWidget {
                             Container(
                               child: modified_text(
                                   size: 15,
-                                  text: tv[index]['original_name'] != null
-                                      ? tv[index]['original_name']
+                                  text: tv![index]['original_name'] != null
+                                      ? tv![index]['original_name']
                                       : 'Loading'),
                             )
                           ],
