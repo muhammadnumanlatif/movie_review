@@ -13,7 +13,7 @@ class TV extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           modified_text(
-            text: 'Top Rated Movies',
+            text: 'Tv',
             size: 26,
           ),
           SizedBox(height: 10),
@@ -42,8 +42,8 @@ class TV extends StatelessWidget {
                             child: Expanded(
                               child: modified_text(
                                   size: 15,
-                                  text: tv[index]['title'] != null
-                                      ? tv[index]['title']
+                                  text: tv[index]['original_name'] != null
+                                      ? tv[index]['original_name']
                                       : 'Loading'),
                             ),
                           )
